@@ -4,7 +4,8 @@ Following these steps allows you to build and publish your modules to a remote r
 
 ## Note
 
-This project is not production ready.
+This tool is not ready yet. At this moment, you can clone the github project and use it. Soon, a cli will be available.
+
 
 ### Why not using [ng-packagr](https://github.com/dherges/ng-packagr)?
 
@@ -69,7 +70,7 @@ Run the publish script:
 npm run publish:lib:your_library
 ```
 
-##Usage
+## Usage
 
 ```
 import {SampleModule} from "demo-web-lib";
