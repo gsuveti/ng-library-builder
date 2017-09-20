@@ -1,0 +1,116 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@3.10.9
+3 info using node@v7.10.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/georgesuveti/IdeaProjects/ng-library-builder',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/georgesuveti/.npm/ng-library-builder/0.1.15/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/georgesuveti/.npm correctMkdir not in flight; initializing
+10 info lifecycle ng-library-builder@0.1.15~prepublish: ng-library-builder@0.1.15
+11 silly lifecycle ng-library-builder@0.1.15~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/georgesuveti/.npm/ng-library-builder/0.1.15/package.tgz',
+12 verbose tar pack   '/Users/georgesuveti/IdeaProjects/ng-library-builder' ]
+13 verbose tarball /Users/georgesuveti/.npm/ng-library-builder/0.1.15/package.tgz
+14 verbose folder /Users/georgesuveti/IdeaProjects/ng-library-builder
+15 verbose addLocalTarball adding from inside cache /Users/georgesuveti/.npm/ng-library-builder/0.1.15/package.tgz
+16 verbose correctMkdir /Users/georgesuveti/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd ng-library-builder@0.1.15
+18 verbose afterAdd /Users/georgesuveti/.npm/ng-library-builder/0.1.15/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/georgesuveti/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/georgesuveti/.npm/ng-library-builder/0.1.15/package/package.json written
+21 silly publish { name: 'ng-library-builder',
+21 silly publish   version: '0.1.15',
+21 silly publish   scripts:
+21 silly publish    { clean: 'rimraf node_modules/',
+21 silly publish      'clean:tmp': 'rimraf .tmp/**',
+21 silly publish      'build:lib:demo-web-lib': 'gulp --src demo-web-lib',
+21 silly publish      'publish:lib:demo-web-lib': 'gulp publish --src demo-web-lib' },
+21 silly publish   main: './src/index.js',
+21 silly publish   author: { name: 'georgesuveti', email: 'george.suveti@irian.ro' },
+21 silly publish   keywords: [ 'angular' ],
+21 silly publish   devDependencies:
+21 silly publish    { del: '^3.0.0',
+21 silly publish      gulp: '^3.9.1',
+21 silly publish      'gulp-concat-json': '^1.0.0',
+21 silly publish      'gulp-ext-replace': '^0.3.0',
+21 silly publish      'gulp-install': '^1.1.0',
+21 silly publish      'gulp-json-editor': '^2.2.1',
+21 silly publish      'gulp-run': '^1.7.1',
+21 silly publish      'gulp-sass': '^3.1.0',
+21 silly publish      moment: '^2.18.1',
+21 silly publish      typescript: '^2.5.2',
+21 silly publish      yargs: '^8.0.2' },
+21 silly publish   readme: '# How to build and publish angular modules\n\nFollowing these steps allows you publish your modules to a remote repository.\n\n\n',
+21 silly publish   readmeFilename: 'README.MD',
+21 silly publish   description: 'Following these steps allows you publish your modules to a remote repository.',
+21 silly publish   _id: 'ng-library-builder@0.1.15',
+21 silly publish   _shasum: '239e8c9e49e9dda14115189209b71b3b7e23c8c8',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name ng-library-builder
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry http://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'ng-library-builder',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'ng-library-builder',
+26 silly mapToRegistry   name: 'ng-library-builder',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri http://registry.npmjs.org/ng-library-builder
+28 verbose publish registryBase http://registry.npmjs.org/
+29 silly publish uploading /Users/georgesuveti/.npm/ng-library-builder/0.1.15/package.tgz
+30 verbose request uri http://registry.npmjs.org/ng-library-builder
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 1:55:19 PM
+33 verbose request using bearer token for auth
+34 verbose request id c7b0d1bc1d813653
+35 http request PUT http://registry.npmjs.org/ng-library-builder
+36 http 403 http://registry.npmjs.org/ng-library-builder
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '104',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Wed, 20 Sep 2017 10:55:04 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-hhn1540-HHN',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1505904904.030138,VS0,VE859',
+37 verbose headers   vary: 'Accept-Encoding, Accept' }
+38 verbose request invalidating /Users/georgesuveti/.npm/registry.npmjs.org/ng-library-builder on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: you must verify your email before publishing a new package: https://www.npmjs.com/email-edit : ng-library-builder
+40 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:290:14)
+40 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+40 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:187:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:194:7)
+40 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1048:10)
+40 verbose stack     at emitOne (events.js:96:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:969:12)
+41 verbose statusCode 403
+42 verbose pkgid ng-library-builder
+43 verbose cwd /Users/georgesuveti/IdeaProjects/ng-library-builder
+44 error Darwin 15.6.0
+45 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+46 error node v7.10.0
+47 error npm  v3.10.9
+48 error code E403
+49 error you must verify your email before publishing a new package: https://www.npmjs.com/email-edit : ng-library-builder
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]

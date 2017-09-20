@@ -1,0 +1,19 @@
+{
+  "name": "demo-web-lib",
+  "version": "1.0.0",
+  "main": "./src/index.js",
+  "author": {
+    "name": "georgesuveti",
+    "email": "george.suveti@gmail.com"
+  },
+  "dependencies": {
+    "@angular/common": "^4.4.3",
+    "@angular/core": "^4.4.3",
+    "@angular/forms": "^4.4.3",
+    "@angular/http": "^4.4.3",
+    "@angular/platform-browser": "4.4.3",
+    "@angular/router": "^4.4.3",
+    "rxjs": "^5.4.3",
+    "zone.js": "^0.8.17"
+  }
+}

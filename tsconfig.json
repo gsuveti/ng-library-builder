@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+        "baseUrl": "src",
+        "declaration": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": [
+            "es6",
+            "es2015",
+            "dom"
+        ],
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "outDir": ".tmp/release/src",
+        "sourceMap": false,
+        "typeRoots": [
+            "./node_modules/@types"
+        ]
+    },
+    "files": [
+        ".tmp/src/public_api.ts"
+    ],
+    "angularCompilerOptions": {
+        "genDir": "",
+        "skipTemplateCodegen": true,
+        "debug": true,
+        "entryModule": "index#SampleModule",
+        "flatModuleOutFile": "index",
+        "flatModuleId": "@irian/demo-web-lib",
+        "skipMetadataEmit": false,
+        "strictMetadataEmit": true
+    }
+}

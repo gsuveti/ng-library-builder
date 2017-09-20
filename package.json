@@ -1,0 +1,32 @@
+{
+  "name": "ng-library-builder",
+  "version": "0.1.15",
+  "scripts": {
+    "clean": "rimraf node_modules/",
+    "clean:tmp": "rimraf .tmp/**",
+    "build:lib:demo-web-lib": "gulp --src demo-web-lib",
+    "publish:lib:demo-web-lib": "gulp publish --src demo-web-lib"
+  },
+  "main": "./src/index.js",
+  "author": {
+    "name": "georgesuveti",
+    "email": "george.suveti@irian.ro"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-concat-json": "^1.0.0",
+    "gulp-ext-replace": "^0.3.0",
+    "gulp-install": "^1.1.0",
+    "gulp-json-editor": "^2.2.1",
+    "gulp-run": "^1.7.1",
+    "gulp-sass": "^3.1.0",
+    "moment": "^2.18.1",
+    "typescript": "^2.5.2",
+    "yargs": "^8.0.2"
+  }
+
+}
