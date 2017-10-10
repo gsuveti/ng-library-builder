@@ -15,5 +15,3 @@ if (argv.rootDir) {
 } else {
     console.error("rootDir not defined");
 }
-
-cd
