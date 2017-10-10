@@ -16,8 +16,10 @@
     "@angular/platform-browser": "^4.3.6",
     "@angular/router": "^4.3.6",
     "@ngx-translate/core": "^8.0.0",
-    "ng-library-builder": "^0.0.10",
     "rxjs": "^5.4.3",
     "zone.js": "^0.8.17"
+  },
+  "devDependencies": {
+    "ng-library-builder": "^0.0.11"
   }
 }
