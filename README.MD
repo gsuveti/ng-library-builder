@@ -2,15 +2,11 @@
 
 Following these steps allows you to build and publish your modules to a remote repository.
 
-## Note
-
-This tool is not ready yet. At this moment, you can clone the github project and use it. Soon, a cli will be available.
-
 
 ### Why not using [ng-packagr](https://github.com/dherges/ng-packagr)?
 
 
-ng-packagr has really cool features and it implements Angular Package Format. Sadly, i couldn't make it work with lazy loading.
+ng-packagr has really cool features and it implements Angular Package Format. Sadly, i could not make it work with lazy loading.
 If you don't need lazy loading go ahead and use it.
 
 
@@ -73,7 +69,7 @@ npm run publish:lib:your_library
 ## Usage
 
 ```
-import {SampleModule} from "demo-web-lib";
+import {SampleModule} from "demo-web-lib/public_api";
 
 @NgModule({
     imports: [
@@ -99,6 +95,15 @@ const ROUTES = [
 ]
 ```
 
+## Note
+
+This builder started as a gulp task. The ng-lb script just takes the args and pass them to the gulp task. The gulp tasks will be removed in the near future :)
+
+
 ## Coming soon
 
-A demo app that will use the builded module
+Soon the possibility to extend/override the tsconfig.json will be added.
+
+## Thanks
+
+Special thanks to [angular-library-builder](https://github.com/bmvantunes/angular-library-builder) and [ng-packagr](https://github.com/dherges/ng-packagr).

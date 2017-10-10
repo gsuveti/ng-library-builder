@@ -1,0 +1,20 @@
+{
+    "project": {
+        "name": "demo-web-lib"
+    },
+    "apps": [
+        {
+            "root": "src",
+            "prefix": "dwl"
+        }
+    ],
+    "defaults": {
+        "styleExt": "scss",
+        "prefixInterfaces": false,
+        "component": {
+            "inlineStyle": false,
+            "inlineTemplate": false
+        }
+
+    }
+}

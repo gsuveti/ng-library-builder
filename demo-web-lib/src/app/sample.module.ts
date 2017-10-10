@@ -4,12 +4,15 @@ import {SampleComponent} from './sample.component/sample.component';
 import {SampleDirective} from './sample.directive';
 import {SamplePipe} from './sample.pipe';
 import {SampleRoutingModule} from './sample-routing.module';
-
+import {TranslateModule} from "@ngx-translate/core";
+import {HttpModule} from "@angular/http";
 
 @NgModule({
     imports: [
         CommonModule,
-        SampleRoutingModule
+        HttpModule,
+        SampleRoutingModule,
+        TranslateModule.forChild()
     ],
     declarations: [
         SampleComponent,
@@ -23,6 +26,7 @@ import {SampleRoutingModule} from './sample-routing.module';
     ]
 })
 export class SampleModule {
+
 }
 
 

@@ -1,19 +1,17 @@
 {
   "name": "ng-library-builder",
   "version": "0.0.4",
-  "scripts": {
-    "clean": "rimraf node_modules/",
-    "clean:tmp": "rimraf .tmp/**",
-    "build:lib:demo-web-lib": "gulp --src demo-web-lib",
-    "publish:lib:demo-web-lib": "gulp publish --src demo-web-lib"
+  "bin": {
+    "ng-lb": "bin/ng-lb.js"
   },
-  "main": "./src/index.js",
   "author": {
     "name": "georgesuveti",
     "email": "george.suveti@gmail.com"
   },
   "keywords": [
-    "angular"
+    "angular",
+    "library",
+    "builder"
   ],
   "repository": {
     "type": "git",

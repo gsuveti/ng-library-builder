@@ -12,22 +12,19 @@
         "target": "es5",
         "module": "commonjs",
         "moduleResolution": "node",
-        "outDir": ".tmp/release/src",
-        "sourceMap": false,
+        "outDir": "release",
+        "sourceMap": true,
         "typeRoots": [
             "./node_modules/@types"
         ]
     },
     "files": [
-        ".tmp/src/public_api.ts"
+        "src/public_api.ts"
     ],
     "angularCompilerOptions": {
         "genDir": "",
         "skipTemplateCodegen": true,
         "debug": true,
-        "entryModule": "index#SampleModule",
-        "flatModuleOutFile": "index",
-        "flatModuleId": "@irian/demo-web-lib",
         "skipMetadataEmit": false,
         "strictMetadataEmit": true
     }
