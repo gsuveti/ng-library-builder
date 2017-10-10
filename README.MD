@@ -1,13 +1,15 @@
-# How to build and publish angular modules
-
-Following these steps allows you to build and publish your modules to a remote repository.
-
-
 ### Why not using [ng-packagr](https://github.com/dherges/ng-packagr)?
 
 
 ng-packagr has really cool features and it implements Angular Package Format. Sadly, i could not make it work with lazy loading.
 If you don't need lazy loading go ahead and use it.
+
+# How to build and publish angular modules
+
+Following these steps allows you to build and publish your modules to a remote repository.
+
+
+
 
 
 ## Folder structure and required files
@@ -17,6 +19,7 @@ If you don't need lazy loading go ahead and use it.
     --src
         --index.ts
         --public_api.ts
+        --package.json
 ```
 
 ### public_api.ts
@@ -37,34 +40,13 @@ export * from './public_api';
 
 ## Build
 
-Update the build script with your path:
-
-```
-"build:lib:your_library": "gulp --src ../../../your_library",
-
-```
-
-Run the build script:
-
-```
-npm run build:lib:your_library
-
-```
+    ng-lb --rootDir path/to/your/source --outDir path/to/dist
 
 ## Publish
 
-Update the publish script with your path:
+    ng-lb --publish --rootDir path/to/your/source --outDir path/to/dist
 
-```
-"publish:lib:your_library": "gulp --src ../../../your_library",
-
-```
-
-Run the publish script:
-
-```
-npm run publish:lib:your_library
-```
+Will do build and then publish.
 
 ## Usage
 
