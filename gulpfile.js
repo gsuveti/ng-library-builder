@@ -15,6 +15,7 @@ const OUT_DIR = argv.outDir || 'dist';
 const TEMP_DIR = path.join(OUT_DIR, '..', '.tmp');
 const RELEASE_DIR = `release`;
 const ROOT_DIR = argv.rootDir;
+const timestampedVersion = argv.timestampedVersion;
 
 console.log("ng-lb build started");
 // console.log(`rootDir folder: ${ROOT_DIR}`);
@@ -85,7 +86,9 @@ gulp.task('edit-package-json', ['copy-package-json'], () => {
             }
 
             json.devDependencies = undefined;
-            json.version = `${json.version}-rc.${moment().format('DDMMYYYY-HHmmssSSSS')}`;
+            if(timestampedVersion) {
+                json.version = `${json.version}-rc.${moment().format('DDMMYYYY-HHmmssSSSS')}`;
+            }
             json.main = `public_api.js`;
             return json; // must return JSON object.
         }))

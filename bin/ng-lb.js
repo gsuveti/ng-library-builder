@@ -11,7 +11,8 @@ if (argv.rootDir) {
     const outDir = path.join(...ngLibraryBuilderDirAsArray.fill('..'), argv.outDir ? argv.outDir : 'dist');
 
     const task = argv.publish ? 'publish' : 'build';
-    shell.exec(`cd ${ngLibraryDir} && gulp ${task} --rootDir ${rootDir} --outDir ${outDir}`);
+    const timestampedVersion = argv.timestampedVersion ? '--timestampedVersion' : '';
+    shell.exec(`cd ${ngLibraryDir} && gulp ${task} --rootDir ${rootDir} --outDir ${outDir} ${timestampedVersion}`);
 } else {
     console.error("rootDir not defined");
 }
