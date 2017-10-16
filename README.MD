@@ -19,7 +19,7 @@ Following these steps allows you to build and publish your modules to a remote r
     --src
         --index.ts
         --public_api.ts
-        --package.json
+    --package.json
 ```
 
 ### public_api.ts
@@ -76,6 +76,10 @@ const ROUTES = [
  ...
 ]
 ```
+
+## Demo
+
+[ng-playground](https://github.com/gsuveti/ng-playground)
 
 ## Note
 
