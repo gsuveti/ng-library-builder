@@ -18,10 +18,10 @@ const ROOT_DIR = argv.rootDir;
 const timestampedVersion = argv.timestampedVersion;
 
 console.log("ng-lb build started");
-// console.log(`rootDir folder: ${ROOT_DIR}`);
-// console.log(`outDir folder: ${OUT_DIR}`);
+console.log(`rootDir folder: ${ROOT_DIR}`);
+console.log(`outDir folder: ${OUT_DIR}`);
 
-gulp.task('build', ['ngc', 'edit-package-json', 'inline-resources', 'copy-assets', 'copy-i18n', 'copy-release-to-dist']);
+gulp.task('build', ['ngc', 'edit-package-json', 'copy-main-readme','inline-resources', 'copy-assets', 'copy-i18n', 'copy-release-to-dist', 'copy-readmes']);
 gulp.task('default', ['build']);
 gulp.task('publish', ['build'], () => {
     return run(`cd ./${OUT_DIR} && npm publish`).exec();
@@ -42,6 +42,12 @@ gulp.task('copy-tsconfig', ['clean'], () => {
     return gulp.src([`tsconfig.json`])
         .pipe(gulp.dest(`./${TEMP_DIR}`));
 });
+
+gulp.task('copy-main-readme', ['clean'], () => {
+    return gulp.src([`${ROOT_DIR}/*.+(md|MD)`])
+        .pipe(gulp.dest(`./${TEMP_DIR}/src`));
+});
+
 
 gulp.task('copy-package-json', ['clean'], () => {
     return gulp.src([`${ROOT_DIR}/package.json`, `package-build.json`])
@@ -86,7 +92,7 @@ gulp.task('edit-package-json', ['copy-package-json'], () => {
             }
 
             json.devDependencies = undefined;
-            if(timestampedVersion) {
+            if (timestampedVersion) {
                 json.version = `${json.version}-rc.${moment().format('DDMMYYYY-HHmmssSSSS')}`;
             }
             json.main = `public_api.js`;
@@ -118,6 +124,13 @@ gulp.task('copy-scss', ['copy-lib'], () => {
         .pipe(sass().on('error', sass.logError))
         //we will keep the sass extension on the css to keep the match in the component styleUrls
         .pipe(ext_replace('.scss'))
+        .pipe(gulp.dest(`./${TEMP_DIR}/${RELEASE_DIR}`));
+});
+
+
+
+gulp.task('copy-readmes', ['copy-lib'], () => {
+    return gulp.src([`./${TEMP_DIR}/src/**/*.+(md|MD)`])
         .pipe(gulp.dest(`./${TEMP_DIR}/${RELEASE_DIR}`));
 });
 
