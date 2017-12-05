@@ -21,6 +21,6 @@
     "zone.js": "^0.8.17"
   },
   "devDependencies": {
-    "ng-library-builder": "^0.0.12"
+    "ng-library-builder": "0.0.16"
   }
 }
