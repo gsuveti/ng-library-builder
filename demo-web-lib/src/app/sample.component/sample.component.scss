@@ -1,3 +1,5 @@
+@import "../../../node_modules/material-colors/dist/colors";
+
 h1 {
-    color: red;
+    color: $md-red-300;
 }

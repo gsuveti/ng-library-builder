@@ -21,7 +21,7 @@ console.log("ng-lb build started");
 console.log(`rootDir folder: ${ROOT_DIR}`);
 console.log(`outDir folder: ${OUT_DIR}`);
 
-gulp.task('build', ['ngc', 'edit-package-json', 'copy-main-readme','inline-resources', 'copy-assets', 'copy-i18n', 'copy-release-to-dist', 'copy-readmes']);
+gulp.task('build', ['ngc', 'edit-package-json', 'copy-main-readme', 'inline-resources', 'copy-assets', 'copy-i18n', 'copy-release-to-dist', 'copy-readmes']);
 gulp.task('default', ['build']);
 gulp.task('publish', ['build'], () => {
     return run(`cd ./${OUT_DIR} && npm publish`).exec();
@@ -119,14 +119,13 @@ gulp.task('copy-i18n', ['copy-lib'], () => {
 
 });
 
-gulp.task('copy-scss', ['copy-lib'], () => {
+gulp.task('copy-scss', ['copy-lib', 'npm-install'], () => {
     return gulp.src([`./${TEMP_DIR}/src/**/*.scss`])
         .pipe(sass().on('error', sass.logError))
         //we will keep the sass extension on the css to keep the match in the component styleUrls
         .pipe(ext_replace('.scss'))
         .pipe(gulp.dest(`./${TEMP_DIR}/${RELEASE_DIR}`));
 });
-
 
 
 gulp.task('copy-readmes', ['copy-lib'], () => {
