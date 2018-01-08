@@ -1,4 +1,6 @@
 /demo-web-lib
+/demo-web-lib/.tmp
+/demo-web-lib/dest
 /.tmp
 /dist
 /.idea

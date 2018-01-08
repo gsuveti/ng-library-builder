@@ -28,8 +28,8 @@
     "zone.js": "^0.8.17"
   },
   "devDependencies": {
-    "ng-library-builder": "0.0.17"
+    "ng-library-builder": "0.0.18"
   },
   "lazy-module": "app/sample.module.ts",
-  "typings":"public_api.d.ts"
+  "typings": "public_api.d.ts"
 }
