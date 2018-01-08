@@ -6,7 +6,7 @@
     "email": "george.suveti@irian.ro"
   },
   "scripts": {
-    "build": "ng-lb --rootDir ./"
+    "build": "ng-lb"
   },
   "dependencies": {
     "@angular/animations": "^5.1.0",
@@ -22,11 +22,14 @@
     "@angular/router": "^5.1.0",
     "@ngx-translate/core": "^8.0.0",
     "material-colors": "^1.2.5",
+    "ng-packagr": "^1.6.0",
     "rxjs": "^5.5.5",
     "typescript": "^2.4.2",
     "zone.js": "^0.8.17"
   },
   "devDependencies": {
-    "ng-library-builder": "0.0.16"
-  }
+    "ng-library-builder": "0.0.17"
+  },
+  "lazy-module": "app/sample.module.ts",
+  "typings":"public_api.d.ts"
 }

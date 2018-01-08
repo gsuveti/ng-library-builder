@@ -5,7 +5,7 @@ import {SampleComponent} from './sample.component/sample.component';
 
 const ROUTES = [
     {
-        path: '',
+        path: 'demo',
         component: SampleComponent
     }
 ];

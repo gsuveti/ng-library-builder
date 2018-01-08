@@ -42,9 +42,6 @@ export * from './public_api';
 
     ng-lb --rootDir path/to/your/source --outDir path/to/dist
 
-## Publish
-
-    ng-lb --publish --rootDir path/to/your/source --outDir path/to/dist
 
 Will do build and then publish.
 
@@ -80,10 +77,6 @@ const ROUTES = [
 ## Demo
 
 [ng-playground](https://github.com/gsuveti/ng-playground)
-
-## Note
-
-This builder started as a gulp task. The ng-lb script just takes the args and pass them to the gulp task. The gulp tasks will be removed in the near future :)
 
 
 ## Coming soon
