@@ -21,7 +21,7 @@ program
 let rootDir = path.resolve(process.cwd(), program.rootDir || './');
 let outDir = path.resolve(process.cwd(), program.outDir || './dist');
 let tmpDir = path.join(outDir, '..', '.tmp');
-let cwd = process.cwd();
+let libDir = path.join(path.dirname(fs.realpathSync(__filename)),'..');
 
 console.log(`Root dir: ${rootDir}`);
 console.log(`Out dir: ${outDir}`);
@@ -45,11 +45,11 @@ console.log(`Out dir: ${outDir}`);
     });
     await copy(`${rootDir}`, `${tmpSrcDir}`, {filter: ['*.+(md|MD)']});
 
-    let tsconfigPath = path.join(cwd, 'tsconfig.json');
+    let tsconfigPath = path.join(libDir, 'tsconfig.json');
     let tsconfigPathDest = path.join(tmpDir, 'tsconfig.json');
     await fs.copy(tsconfigPath, tsconfigPathDest);
 
-    let builderPackageJson = await  fs.readJson(path.join(cwd, 'package-build.json'));
+    let builderPackageJson = await  fs.readJson(path.join(libDir, 'package-build.json'));
     let libPackageJson = await  fs.readJson(path.join(rootDir, 'package.json'));
     libPackageJson.devDependencies = builderPackageJson.devDependencies;
 
