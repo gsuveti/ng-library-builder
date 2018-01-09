@@ -75,6 +75,11 @@ const routes: Routes = [{
 [see demo-web-app and demo-web-lib](https://github.com/gsuveti/ng-library-builder)
 
 
+## Note
+
+Only scss is currently supported. Please transpile your style to css before the build if you use another preprocessors (you need to use the same extension).
+
+
 ## Thanks
 
 Special thanks to [angular-library-builder](https://github.com/bmvantunes/angular-library-builder) and [ng-packagr](https://github.com/dherges/ng-packagr).
