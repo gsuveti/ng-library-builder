@@ -1,12 +1,13 @@
 {
-  "name": "demo-web-lib",
-  "version": "1.0.0",
+  "name": "@ng-library-builder/demo-web-lib",
+  "version": "1.0.4",
   "author": {
     "name": "georgesuveti",
     "email": "george.suveti@irian.ro"
   },
   "scripts": {
-    "build": "ng-lb"
+    "build": "ng-lb",
+    "release": "npm version patch && npm run build && cd dist && npm publish"
   },
   "dependencies": {
     "@angular/animations": "^5.1.0",
@@ -21,15 +22,15 @@
     "@angular/platform-server": "^5.1.0",
     "@angular/router": "^5.1.0",
     "@ngx-translate/core": "^8.0.0",
+    "@ngx-translate/http-loader": "^2.0.1",
     "material-colors": "^1.2.5",
-    "ng-packagr": "^1.6.0",
     "rxjs": "^5.5.5",
     "typescript": "^2.4.2",
     "zone.js": "^0.8.17"
   },
   "devDependencies": {
-    "ng-library-builder": "0.0.18"
+    "ng-library-builder": "0.0.19"
   },
-  "lazy-module": "app/sample.module.ts",
+  "lazy-module": "app/demo.module.ts",
   "typings": "public_api.d.ts"
 }

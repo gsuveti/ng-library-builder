@@ -1,3 +1,3 @@
-export {SampleComponent} from './app/sample.component/sample.component';
-export {SamplePipe} from './app/sample.pipe';
-export {SampleModule} from './app/sample.module';
+export {DemoComponent} from './app/demo.component/demo.component';
+export {DemoPipe} from './app/demo.pipe';
+export {DemoModule} from './app/demo.module';

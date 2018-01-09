@@ -12,6 +12,6 @@
   ],
   "include": [
     "./",
-    "../node_modules/demo-web-lib/**/*.ts"
+    "../node_modules/@ng-library-builder/**/*.ts"
   ]
 }

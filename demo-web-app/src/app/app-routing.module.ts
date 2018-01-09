@@ -3,8 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 
 const routes: Routes = [{
   path: 'lazy',
-  loadChildren: 'demo-web-lib/app/sample.module#SampleModule'
-
+  loadChildren: '@ng-library-builder/demo-web-lib/app/demo.module#DemoModule'
 }];
 
 @NgModule({

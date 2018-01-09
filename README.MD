@@ -42,46 +42,33 @@ export * from './public_api';
 
     ng-lb --rootDir path/to/your/source --outDir path/to/dist
 
+## Lazy loading usage
 
-Will do build and then publish.
 
-## Usage
-
-```
-import {SampleModule} from "demo-web-lib/public_api";
-
-@NgModule({
-    imports: [
-        ...,
-        SampleModule
-    ],
-    ...
-})
-
-export class AppModule {
-}
-```
-
-or with lazy loading
+include the package in src/tsconfig.app.json
 
 ```
-const ROUTES = [
- {
-        path: 'sample',
-        loadChildren: 'demo-web-lib#SampleModule'
- },
- ...
-]
+
+"include": [
+    "./",
+    "../node_modules/@ng-library-builder/**/*.ts"
+  ]
+
+```
+
+```
+
+const routes: Routes = [{
+  path: 'lazy',
+  loadChildren: '@ng-library-builder/demo-web-lib/app/demo.module#DemoModule'
+}];
+
 ```
 
 ## Demo
 
-[ng-playground](https://github.com/gsuveti/ng-playground)
+[see demo-web-app and demo-web-lib](https://github.com/gsuveti/ng-library-builder)
 
-
-## Coming soon
-
-Soon the possibility to extend/override the tsconfig.json will be added.
 
 ## Thanks
 

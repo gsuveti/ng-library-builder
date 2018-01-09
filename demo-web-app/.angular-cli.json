@@ -13,13 +13,13 @@
         "i18n",
         {
           "glob": "**/i18n/*.json",
-          "input": "../node_modules/demo-web-lib/",
-          "output": "./demo-web-lib"
+          "input": "../node_modules/@ng-library-builder/",
+          "output": "./"
         },
         {
           "glob": "**/assets/*.*",
-          "input": "../node_modules/demo-web-lib/",
-          "output": "./demo-web-lib"
+          "input": "../node_modules/@ng-library-builder/",
+          "output": "./"
         }
       ],
       "index": "index.html",
