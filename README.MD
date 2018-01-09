@@ -50,7 +50,7 @@ export * from './public_api';
 ## Lazy loading usage
 
 
-include the package in src/tsconfig.app.json
+1. include the package in src/tsconfig.app.json
 
 ```
 
@@ -60,7 +60,7 @@ include the package in src/tsconfig.app.json
   ]
 
 ```
-
+2. configure the lazy route
 ```
 
 const routes: Routes = [{
