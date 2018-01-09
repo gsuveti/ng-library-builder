@@ -77,7 +77,7 @@ const routes: Routes = [{
 
 ## Note
 
-Only scss is currently supported. Please transpile your style to css before the build if you use another preprocessors (you need to use the same extension).
+Only scss is currently supported. If you use another preprocessors, please transpile your style to css before the build.
 
 
 ## Thanks
