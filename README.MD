@@ -4,19 +4,14 @@
 ng-packagr has really cool features and it implements Angular Package Format. Sadly, i could not make it work with lazy loading.
 If you don't need lazy loading go ahead and use it.
 
-# How to build and publish angular modules
-
-Following these steps allows you to build and publish your modules to a remote repository.
-
-
-
-
 
 ## Folder structure and required files
 
 ```
 -- your_library
     --src
+        --app
+            --demo.module.ts
         --index.ts
         --public_api.ts
     --package.json
@@ -26,9 +21,10 @@ Following these steps allows you to build and publish your modules to a remote r
 
 
 ```
-export {SampleComponent} from './sample.component/sample.component';
-export {SamplePipe} from './sample.pipe';
-export {SampleModule} from './sample.module';
+export {DemoComponent} from './app/demo.component/demo.component';
+export {DemoPipe} from './app/demo.pipe';
+export {DemoModule} from './app/demo.module';
+
 ```
 
 ### index.ts
@@ -40,7 +36,16 @@ export * from './public_api';
 
 ## Build
 
+1. add the path to lazy module in your package.json (relative to src folder)
+```
+  "lazy-module": "app/demo.module.ts",
+```
+
+2. build the module
+```
     ng-lb --rootDir path/to/your/source --outDir path/to/dist
+```
+
 
 ## Lazy loading usage
 
