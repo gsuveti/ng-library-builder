@@ -21,7 +21,7 @@ program
 let rootDir = path.resolve(process.cwd(), program.rootDir || './');
 let outDir = path.resolve(process.cwd(), program.outDir || './dist');
 let tmpDir = path.join(outDir, '..', '.tmp');
-let libDir = path.join(path.dirname(fs.realpathSync(__filename)),'..');
+let libDir = path.join(path.dirname(fs.realpathSync(__filename)), '..');
 
 console.log(`Root dir: ${rootDir}`);
 console.log(`Out dir: ${outDir}`);
@@ -37,7 +37,7 @@ console.log(`Out dir: ${outDir}`);
 
     await fs.copy(srcDir, tmpSrcDir, {
         filter: (src) => {
-            if (src === path.join(srcDir, 'node_modules') || src === path.join(tmpSrcDir, 'package.json')) {
+            if (src === path.join(srcDir, 'node_modules')) {
                 return false;
             }
             return true;
@@ -86,20 +86,15 @@ console.log(`Out dir: ${outDir}`);
     copy(`${tmpSrcDir}`, `${releaseDir}`, {filter: ['**/*.+(md|MD)']});
 
     let packageJson = await  fs.readJson(path.join(tmpDir, 'package.json'));
-    packageJson.peerDependencies = {};
-    let dependencies = Object.keys(packageJson.dependencies);
-    dependencies.map(dependency => {
-        const version = packageJson.dependencies[dependency];
-        if (version.startsWith('^')) {
-            packageJson.peerDependencies[dependency] = version;
-            delete packageJson.dependencies[dependency];
-        }
-    });
+    let srcPackageJson = await  fs.readJson(path.join(srcDir, 'package.json'));
 
-    if (Object.keys(packageJson.peerDependencies).length === 0) {
+    packageJson.peerDependencies = packageJson.dependencies;
+    packageJson.dependencies = srcPackageJson ? srcPackageJson.dependencies : undefined;
+
+    if (packageJson.peerDependencies && Object.keys(packageJson.peerDependencies).length === 0) {
         packageJson.peerDependencies = undefined;
     }
-    if (Object.keys(packageJson.dependencies).length === 0) {
+    if (packageJson.dependencies && Object.keys(packageJson.dependencies).length === 0) {
         packageJson.dependencies = undefined;
     }
 
@@ -108,10 +103,14 @@ console.log(`Out dir: ${outDir}`);
         packageJson.version = `${packageJson.version}-rc.${moment().format('DDMMYYYY-HHmmssSSSS')}`;
     }
     packageJson.main = `public_api.js`;
-    let lazyModule = packageJson["lazy-module"];
+    packageJson.typings = `public_api.d.ts`;
 
     await fs.writeJson(path.join(releaseDir, 'package.json'), packageJson);
-    await fs.copy(path.join(tmpSrcDir, lazyModule), path.join(releaseDir, lazyModule));
+
+    let lazyModule = packageJson["lazy-module"];
+    if (lazyModule) {
+        await fs.copy(path.join(tmpSrcDir, lazyModule), path.join(releaseDir, lazyModule));
+    }
     await copy(releaseDir, outDir);
 
     return;
