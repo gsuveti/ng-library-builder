@@ -81,9 +81,11 @@ console.log(`Out dir: ${outDir}`);
 
     await runNgc();
 
-    await fs.copy(`${tmpSrcDir}/assets`, `${releaseDir}/assets`);
-    copy(`${tmpSrcDir}/i18n`, `${releaseDir}/i18n`, {filter: ['**/*.json']});
-    copy(`${tmpSrcDir}`, `${releaseDir}`, {filter: ['**/*.+(md|MD)']});
+    await fs.copy(`${tmpSrcDir}/assets`, `${releaseDir}/assets`)
+        .catch(err => console.log('no assets folder'));
+    await copy(`${tmpSrcDir}/i18n`, `${releaseDir}/i18n`, {filter: ['**/*.json']})
+        .catch(err => console.log('no i18n folder'));
+    await copy(`${tmpSrcDir}`, `${releaseDir}`, {filter: ['**/*.+(md|MD)']});
 
     let packageJson = await  fs.readJson(path.join(tmpDir, 'package.json'));
     let srcPackageJson = await  fs.readJson(path.join(srcDir, 'package.json'));
