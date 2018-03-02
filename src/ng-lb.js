@@ -16,6 +16,7 @@ program
     .option('-r, --rootDir [rootDir]', 'root dir')
     .option('-o, --outDir [outDir]', 'out dir')
     .option('-t, --timestampedVersion', 'timestampedVersion')
+    .option('-v, --versionPatch', 'versionPatch')
     .parse(process.argv);
 
 let rootDir = path.resolve(process.cwd(), program.rootDir || './');
@@ -34,6 +35,10 @@ console.log(`Out dir: ${outDir}`);
 
     await fs.remove(outDir);
     await fs.remove(tmpDir);
+
+    if(program.versionPatch){
+        await versionPatch();
+    }
 
     await fs.copy(srcDir, tmpSrcDir, {
         filter: (src) => {
@@ -104,6 +109,7 @@ console.log(`Out dir: ${outDir}`);
     if (program.timestampedVersion) {
         packageJson.version = `${packageJson.version}-rc.${moment().format('DDMMYYYY-HHmmssSSSS')}`;
     }
+
     packageJson.main = `public_api.js`;
     packageJson.typings = `public_api.d.ts`;
 
@@ -145,5 +151,20 @@ async function runNpmInstall() {
                 resolve();
             }
         });
+    })
+}
+
+async function versionPatch() {
+    return new Promise((resolve, reject) => {
+        exec(`npm version patch`, {cwd: rootDir}, function (err, stdout, stderr) {
+            if (err) {
+                console.log('version patch failed.');
+                reject(err)
+            } else {
+                console.log('version patch succeeded!');
+                resolve()
+            }
+        })
+
     })
 }
