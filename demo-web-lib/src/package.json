@@ -1,3 +1,6 @@
 {
-  "name": "demo-web-lib"
+  "name": "demo-web-lib",
+  "dependencies": {
+    "momentjs": "^2.0.0"
+  }
 }

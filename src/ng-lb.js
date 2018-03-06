@@ -56,12 +56,15 @@ console.log(`Out dir: ${outDir}`);
 
     let builderPackageJson = await  fs.readJson(path.join(libDir, 'package-build.json'));
     let libPackageJson = await  fs.readJson(path.join(rootDir, 'package.json'));
+    let srcPackageJson = await  fs.readJson(path.join(srcDir, 'package.json'));
+
     libPackageJson.devDependencies = builderPackageJson.devDependencies;
+    if(srcPackageJson){
+        Object.assign(libPackageJson.dependencies, srcPackageJson.dependencies);
+    }
 
     await fs.writeJson(path.join(tmpDir, 'package.json'), libPackageJson);
-
     await runNpmInstall();
-
 
     await FileHound.create()
         .paths(tmpSrcDir)
@@ -93,9 +96,7 @@ console.log(`Out dir: ${outDir}`);
     await copy(`${tmpSrcDir}`, `${releaseDir}`, {filter: ['**/*.+(md|MD)']});
 
     let packageJson = await  fs.readJson(path.join(tmpDir, 'package.json'));
-    let srcPackageJson = await  fs.readJson(path.join(srcDir, 'package.json'));
-
-    packageJson.peerDependencies = packageJson.dependencies;
+    packageJson.peerDependencies = libPackageJson.dependencies;
     packageJson.dependencies = srcPackageJson ? srcPackageJson.dependencies : undefined;
 
     if (packageJson.peerDependencies && Object.keys(packageJson.peerDependencies).length === 0) {
