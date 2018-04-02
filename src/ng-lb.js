@@ -6,10 +6,10 @@ const fs = require('fs-extra');
 const npm = require('npm-cmd');
 const {exec} = require('child_process');
 const copy = require('recursive-copy');
-const sass = require('node-sass');
 const FileHound = require('filehound');
 const inlineResources = require('angular-inline-resources');
 const moment = require('moment');
+const webpack = require("webpack");
 
 program
     .version('0.1.0')
@@ -36,7 +36,7 @@ console.log(`Out dir: ${outDir}`);
     await fs.remove(outDir);
     await fs.remove(tmpDir);
 
-    if(program.versionPatch){
+    if (program.versionPatch) {
         await versionPatch();
     }
 
@@ -59,7 +59,7 @@ console.log(`Out dir: ${outDir}`);
     let srcPackageJson = await  fs.readJson(path.join(srcDir, 'package.json'));
 
     libPackageJson.devDependencies = builderPackageJson.devDependencies;
-    if(srcPackageJson){
+    if (srcPackageJson) {
         Object.assign(libPackageJson.dependencies, srcPackageJson.dependencies);
     }
 
@@ -71,18 +71,10 @@ console.log(`Out dir: ${outDir}`);
         .ext('scss')
         .find()
         .then(files => {
-            files.map(file => {
-                sass.render({
-                    file,
-                    outFile: file,
-                    outputStyle: 'compressed',
-                }, function (error, result) { // node-style callback from v3.0.0 onwards
-                    if (!error) {
-                        // No errors during the compilation, write this result on the disk
-                        fs.outputFile(file, result.css);
-                    }
-                });
-            })
+            let scssToCssPromises = files.map(file => {
+                return scssToCss(file);
+            });
+            return Promise.all(scssToCssPromises);
         });
 
     await  inlineResources(`${tmpSrcDir}`);
@@ -163,9 +155,52 @@ async function versionPatch() {
                 reject(err)
             } else {
                 console.log('version patch succeeded!');
-                resolve()
+                resolve();
             }
         })
+
+    })
+}
+
+async function scssToCss(file) {
+    const dirname = path.dirname(file);
+    return new Promise((resolve, reject) => {
+        webpack({
+            entry: [file],
+            output: {
+                path: dirname,
+                filename: './bundle.js',
+            },
+            module: {
+                rules: [
+                    {
+                        test: /\.scss$/,
+                        use: [
+                            {
+                                loader: 'file-loader',
+                                options: {
+                                    name: '[name].scss'
+                                }
+                            },
+                            {
+                                loader: 'extract-loader'
+                            },
+                            {
+                                loader: 'css-loader'
+                            },
+                            {
+                                loader: 'sass-loader'
+                            }
+                        ]
+                    }
+                ]
+            }
+        }, (err, stats) => {
+            if (err || stats.hasErrors()) {
+                reject(err);
+            }
+            resolve();
+        });
 
     })
 }

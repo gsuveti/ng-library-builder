@@ -1,5 +1,5 @@
 {
-  "name": "demo-web-lib",
+  "name": "@ng-library-builder/demo-web-lib",
   "dependencies": {
     "momentjs": "^2.0.0"
   }
