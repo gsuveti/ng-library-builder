@@ -1,6 +1,6 @@
 {
   "name": "ng-library-builder",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "bin": {
     "ng-lb": "src/ng-lb.js"
   },
