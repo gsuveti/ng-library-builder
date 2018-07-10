@@ -6,7 +6,6 @@ import {TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateLoader} from '@ngx-translate/core';
-import {DemoModule} from "@ng-library-builder/demo-web-lib";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './i18n/', '.json');
@@ -19,7 +18,6 @@ export function createTranslateLoader(http: HttpClient) {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DemoModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
