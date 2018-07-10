@@ -33,7 +33,7 @@
     "fs-extra": "^5.0.0",
     "moment": "^2.18.1",
     "node": "^10.6.0",
-    "node-sass": "^4.8.3",
+    "node-sass": "^4.9.2",
     "npm-cmd": "^0.2.0",
     "recursive-copy": "^2.0.8",
     "sass-loader": "^6.0.7",

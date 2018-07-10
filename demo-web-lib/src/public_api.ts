@@ -1,2 +1,2 @@
-export {SampleComponent} from './app/sample.component/sample.component';
-export {SampleModule} from './app/sample.module';
+export {DemoComponent} from './app/demo.component/demo.component';
+export {DemoModule} from './app/demo.module';
