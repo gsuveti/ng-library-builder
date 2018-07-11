@@ -22,10 +22,10 @@
         "src/public_api.ts"
     ],
     "angularCompilerOptions": {
-        "genDir": "",
+        "annotateForClosureCompiler": true,
         "skipTemplateCodegen": true,
-        "debug": true,
-        "skipMetadataEmit": false,
-        "strictMetadataEmit": true
+        "strictMetadataEmit": true,
+        "fullTemplateTypeCheck": true,
+        "strictInjectionParameters": true
     }
 }

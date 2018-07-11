@@ -80,6 +80,9 @@ console.log(`Out dir: ${outDir}`);
     await  inlineResources(`${tmpSrcDir}`);
 
     await runNgc();
+    await fs.copy(`${releaseDir}/src`, `${releaseDir}`)
+        .catch(err => console.log('error'));
+    await fs.remove(`${releaseDir}/src`);
 
     await fs.copy(`${tmpSrcDir}/assets`, `${releaseDir}/assets`)
         .catch(err => console.log('no assets folder'));
